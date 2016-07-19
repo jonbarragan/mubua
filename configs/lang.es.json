@@ -1,0 +1,12 @@
+{
+	"langs":{
+		"es":"Español",
+		"en":"English"
+	},
+	"home": {
+		"url": "/es",
+		"text": "Inicio",
+		"title": "ShowRoom Inicio",
+		"h1": "ShowRoom Inicio"
+	}
+}
