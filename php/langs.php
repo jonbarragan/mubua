@@ -1,5 +1,6 @@
 <?php
 
+/*
 $langs = array();
 $isoDefecto = '';
 foreach ($configStrings->langs as $value) {
@@ -18,8 +19,11 @@ $GLOBALS['iso_defecto'] = $isoDefecto;
 uasort($langs, "cmp");
 
 $lang = (isset($_GET['lang']) && $_GET['lang'] != '')?$_GET['lang']:$isoDefecto;
+*/
+
+$lang = $configStrings->lang;
 include(ABSPATH ."php/localization.php");
 
-$nlangs = count($langs);
+//$nlangs = count($langs);
 
 ?>
