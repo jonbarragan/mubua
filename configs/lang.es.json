@@ -8,5 +8,12 @@
 		"text": "Inicio",
 		"title": "ShowRoom Inicio",
 		"h1": "ShowRoom Inicio"
+	},
+	"sections": {
+		"sale": "venta",
+		"sales-history": "historial-ventas",
+		"close-register": "cerrar-caja",
+		"status": "estadisticas",
+		"settings": "ajustes"
 	}
 }

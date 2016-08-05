@@ -18,5 +18,13 @@ class page_core {
 		$arrUri = explode("/", $auxUri);
 	}
 
+	private function scanSections() {
+		//scan sections folder
+	}
+
+	public function getPage() {
+
+	}
+
 }
 ?>
