@@ -615,4 +615,14 @@ Rewriterule ^([^/]*)\/$ index.php?id=$1/&%1 [L]
 #(\/)?
 
 
+##_______________________________
+## BARRA / AUTOMÁTICA DIRECTORIOS ##
+
+#RewriteBase /
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_URI} !index.php
+#RewriteCond %{REQUEST_URI} !(.*)/$
+#RewriteRule ^(.*)$ http://%{SERVER_NAME}/$1/ [L,R=301]
+
+
 

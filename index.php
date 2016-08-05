@@ -23,4 +23,10 @@ include(ABSPATH . "php/lang_strings.php");
 
 $page = new page($lang);
 
+// VENTA
+// HISTORIAL DE VENTAS
+// CERRAR CAJA
+// ESTADISTICAS
+// AJUSTES
+
 ?>
