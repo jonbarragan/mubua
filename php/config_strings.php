@@ -1,5 +1,5 @@
 <?php
-$configStringsFile = ABSPATH ."/configs/config.json";
+$configStringsFile = APPPATH ."/Configs/config.json";
 $configStringsContent = file_get_contents($configStringsFile);
 $configStrings = json_decode($configStringsContent);
 

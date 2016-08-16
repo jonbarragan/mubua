@@ -1,0 +1,64 @@
+{
+	"langs":{
+		"es":"Spanish",
+		"en":"English"
+	},
+	"home": {
+		"url": "/en",
+		"text": "Inicio",
+		"title": "ShowRoom Inicio",
+		"h1": "ShowRoom Inicio"
+	},
+	"pages": {
+		"error404": "error404",
+		"sales": "sales",
+		"receipt": "receipt",
+		"return": "return",
+		"sales-history": "sales-history",
+		"close-register": "close-register",
+		"status": "status",
+		"settings": "settings"
+	},
+	"metadata": {
+		"error404": {
+			"title": "Page not Found | Error 404",
+			"description": "Error 404 Description",
+			"keywords": "Error 404 Keywords"
+		},
+		"sales": {
+			"title": "Products sale",
+			"description": "Sales Description",
+			"keywords": "Sales Keywords"
+		},
+		"receipt": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"return": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"sales-history": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"close-register": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"status": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"settings": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		}
+	}
+}

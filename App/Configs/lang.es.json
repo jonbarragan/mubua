@@ -1,0 +1,64 @@
+{
+	"langs":{
+		"es":"Español",
+		"en":"English"
+	},
+	"home": {
+		"url": "/es",
+		"text": "Inicio",
+		"title": "ShowRoom Inicio",
+		"h1": "ShowRoom Inicio"
+	},
+	"pages": {
+		"error404": "error404",
+		"sales": "ventas",
+		"receipt": "recibo",
+		"return": "devolucion",
+		"sales-history": "historial-ventas",
+		"close-register": "cerrar-caja",
+		"status": "estadisticas",
+		"settings": "ajustes"
+	},
+	"metadata": {
+		"error404": {
+			"title": "Página no encontrada | Error 404",
+			"description": "Error 404 Description",
+			"keywords": "Error 404 Keywords"
+		},
+		"sales": {
+			"title": "Venta de productos",
+			"description": "Ventas Description",
+			"keywords": "Ventas Keywords"
+		},
+		"receipt": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"return": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"sales-history": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"close-register": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"status": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		},
+		"settings": {
+			"title": "",
+			"description": "",
+			"keywords": ""
+		}
+	}
+}

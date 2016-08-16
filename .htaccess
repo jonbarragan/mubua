@@ -46,7 +46,8 @@
 # Customize what Apache returns to the client in case of an error.
 # https://httpd.apache.org/docs/current/mod/core.html#errordocument
 
-ErrorDocument 404 /404.html
+#ErrorDocument 404 /404.html
+ErrorDocument 404 /php/error404.php
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |
@@ -618,11 +619,12 @@ Rewriterule ^([^/]*)\/$ index.php?id=$1/&%1 [L]
 ##_______________________________
 ## BARRA / AUTOMÁTICA DIRECTORIOS ##
 
-#RewriteBase /
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_URI} !index.php
-#RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_URI} !(.*)/$
 #RewriteRule ^(.*)$ http://%{SERVER_NAME}/$1/ [L,R=301]
+RewriteRule ^(.*)$ $1/ [L,R=301]
 
 
 

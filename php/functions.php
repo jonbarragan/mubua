@@ -1,5 +1,17 @@
 <?php
 
+function error404() {
+	header("HTTP/1.0 404 Not Found");
+	include("error404.php");
+	die();
+}
+
+function redirect302($location) {
+	header("HTTP/1.1 302 Moved Temporarily");
+	header("Location: ".$location);
+	die();
+}
+
 function snakeCase($input) {
 	preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
 	$ret = $matches[0];
@@ -40,9 +52,10 @@ function to_camel_case($str, $capitalise_first_char = false) {
 }
 
 function toCamelCase($word) {
-	return lcfirst(str_replace(‘ ‘, ”, ucwords(strtr($word, ‘_-’, ‘ ‘))));
+	return lcfirst(str_replace(' ', '', ucwords(strtr($word, '_-', ' '))));
 }
 
+/*
 public static function fromCamelCase($str) {
 	$str[0] = strtolower($str[0]);
 	return preg_replace('/([A-Z])/e', "'_' . strtolower('\\1')", $str);
@@ -54,5 +67,6 @@ public static function toCamelCase($str, $capitaliseFirstChar = false) {
 	}
 	return preg_replace('/_([a-z])/e', "strtoupper('\\1')", $str);
 }
+*/
 
 ?>

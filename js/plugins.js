@@ -161,9 +161,11 @@ $.extend(jQuery.easing, {
     }
 });
 
+/*
 $(function() {
 	FastClick.attach(document.body);
 });
+*/
 
 
 
