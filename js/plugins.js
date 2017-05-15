@@ -606,4 +606,260 @@ if (!Element.prototype.closest) Element.prototype.closest = function (selector) 
 
 
 
+(function($) {
+	$.fn.padSetup = function(o, mainCallback) {
+
+		this.each(function() {
+
+			var _this = $(this),
+				options = $.extend({}, $.fn.padSetup.defaults, o),
+				//input = _this.find('input, textarea'),
+				//label = _this.find('label'),
+				output = _this.find('.pad__lcd input'),
+				numbersGroup = _this.find('.pad__input__numbers'),
+				numbers = numbersGroup.find('.btn'),
+				operationsGroup = _this.find('.pad__input__operations'),
+				operations = operationsGroup.find('.btn'),
+				padNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+/*
+			var _clear = $('<div/>').addClass('input-clear'),
+				_clearIcon = $('<span/>').addClass('icon-clear');
+			_clearIcon.appendTo(_clear);
+			_clear.appendTo(_this);
+
+			var _pad = $('<div/>').addClass('pad').addClass('pad--' + options.type);
+			_pad.appendTo(_this);
+*/
+
+/*
+			function shuffle(array) {
+				var currentIndex = array.length, temporaryValue, randomIndex;
+
+				while (0 !== currentIndex) {
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+			}
+*/
+
+
+			var onEndTransitionFn = function() {
+				if (support.transitions) {
+					this.removeEventListener( transEndEventName, onEndTransitionFn );
+				}
+
+				newPad();
+			};
+
+
+			var numbersInit = function() {
+				//var newOrder = shuffle(padNumbers)
+
+				numbers.on('click', function(event) {
+					//if (SUPPORTS_TOUCHES) return;
+					if ('ontouchstart' in document) return;
+
+					console.log("click");
+
+					onPadNumberClick(this, event);
+				});
+
+				numbers.on('touchstart', function(event) {
+					//if ('ontouchstart' in document.documentElement) { console.log(SUPPORTS_TOUCHES, "sss"); }
+					console.log("touch");
+					if (preventDoubleTap(this, event)) {
+						onPadNumberClick(this, event);
+					}
+				});
+
+/*
+				for (var i = 0; i < newOrder.length; i++) {
+					var _padNum = $('<div/>').addClass('pad__number btn btn--black').html(newOrder[i]).data('value', newOrder[i]);
+					_padNum.appendTo(_pad);
+
+					_padNum.on('click', function(event) {
+						//if (SUPPORTS_TOUCHES) return;
+						if ('ontouchstart' in document) return;
+
+						console.log("click");
+
+						onPadNumberClick(this, event);
+					});
+
+					_padNum.on('touchstart', function(event) {
+						//if ('ontouchstart' in document.documentElement) { console.log(SUPPORTS_TOUCHES, "sss"); }
+						console.log("touch");
+						if (preventDoubleTap(this, event)) {
+							onPadNumberClick(this, event);
+						}
+					});
+				}
+
+				_pad.fadeTo(200, 1);
+*/
+			};
+
+			var preventDoubleTap = function(element, event) {
+				var t2 = event.timeStamp,
+					t1 = $(element).data('lastTouch') || t2,
+					dt = t2 - t1,
+					fingers = event.originalEvent.touches.length;
+
+				$(element).data('lastTouch', t2);
+
+				if (!dt || dt > 500 || fingers > 1) return true; // not double-tap
+
+				event.preventDefault(); // double tap - prevent the zoom
+				onPadNumberClick(element, event);
+				//$(event.target).trigger('click');
+			};
+
+
+			var onPadNumberClick = function(element, event) {
+				//console.log("CLICK_EVENT over Pad Number");
+
+				var num = $(element).data('value'),
+					maxLength = parseInt(output.attr('maxlength'));
+
+				//if (output.val().length < maxLength) output.val(output.val() + num);
+				output.val(output.val() + num);
+				output.trigger('change');
+			}
+
+/*
+			var openPad = function() {
+				if (_this.hasClass(options.className + '-open')) return;
+
+				if (support.transitions) {
+					_this[0].addEventListener( transEndEventName, onEndTransitionFn );
+					_this.addClass(options.className + '-open');
+				} else {
+					_this.addClass(options.className + '-open');
+					onEndTransitionFn();
+				}
+			}
+*/
+
+			var closePad = function() {
+				if (!_this.hasClass(options.className + '-open')) return;
+
+				_pad.html('').attr('style', '');
+				_this.removeClass(options.className + '-open');
+			}
+
+			var clearPad = function() {
+				input.val('');
+				input.trigger('change');
+			}
+
+			var onClearClick = function(element, event) {
+				//console.log("CLICK_EVENT over input");
+
+				clearPad();
+			}
+
+
+			var onInputClick = function(element, event) {
+				//console.log("CLICK_EVENT over input");
+
+				//openPad();
+			}
+
+			var onInputFocus = function(element, event) {
+				//console.log("FOCUS_EVENT over input");
+
+				//openPad();
+			}
+
+			var onInputBlur = function(element, event) {
+				//console.log("BLUR_EVENT over input");
+
+				//closePad();
+			}
+
+			var onInputChange = function(element, event) {
+				//console.log("CHANGE_EVENT over input");
+			}
+
+			var onInputKeyPress = function(element, event) {
+				//console.log("KEYPRESS_EVENT over input");
+
+				var code = (event.charCode ? event.charCode : event.keyCode);
+
+				if (($(element).val().length =='1') && (code === 8 || code === 46)) {
+					_this.removeClass(options.className + '--hastext').removeClass(options.className + '--overlay').addClass(options.className + '--focus');
+				} else {
+					_this.removeClass(options.className + '--overlay').removeClass(options.className + '--focus').addClass(options.className + '--hastext');
+				}
+			}
+
+			var onInputKeyDown = function(element, event) {
+				//console.log("KEYDOWN_EVENT over input");
+			}
+
+			var onInputKeyUp = function(element, event) {
+				//console.log("KEYUP_EVENT over input");
+			}
+
+
+/*
+			_clear.on('click', function(event) {
+				onClearClick(this, event);
+			});
+*/
+
+			output.on('click', function(event) {
+				onInputClick(this, event);
+			});
+
+			output.on('focus', function(event) {
+				onInputFocus(this, event);
+			});
+
+			output.on('blur', function(event) {
+				onInputBlur(this, event);
+			});
+
+			output.on('change', function(event) {
+				onInputChange(this, event);
+			});
+
+			output.on('keydown', function(event) {
+				onInputKeyPress(this, event);
+			});
+
+			output.on('keypress', function(event) {
+				onInputKeyDown(this, event);
+			});
+
+			output.on('keyup', function() {
+				onInputKeyUp(this, event);
+			});
+
+
+			numbersInit();
+
+
+		});
+	}
+
+
+	$.fn.padSetup.defaults = {
+		type: 'password',
+		className: 'form__element--pad',
+		time: 300,
+		ease: "cubic-bezier(0.280, 0.000, 0.115, 1.000)"
+	}
+}(jQuery));
+
+
+
+
 

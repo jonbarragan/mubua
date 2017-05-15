@@ -5,6 +5,8 @@
         <!-- Add your site or application content here -->
         <p><?= $msg ?></p>
 
+        <?php include APPPATH . 'Includes/calculator.php'; ?>
+
 		<?php include APPPATH . 'Includes/scripts.php'; ?>
     </body>
 </html>
