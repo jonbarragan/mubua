@@ -261,11 +261,12 @@ select {
 				border-top: 1px solid #000000;
 				border-left: 1px solid #000000;
 
-
 				width: 99px;
 				height: 79px;
 				font-size: 2em;
 				line-height: 80px;
+				user-select: none;
+				cursor: pointer;
 			}
 
 			.pad__input__entry--double {
